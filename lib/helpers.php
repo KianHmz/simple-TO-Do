@@ -1,0 +1,5 @@
+<?php
+
+/**
+ * Public Functions
+ */

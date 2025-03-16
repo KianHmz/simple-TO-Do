@@ -1,0 +1,23 @@
+{
+    "name": "kian/to-do-app",
+    "type": "project",
+    "require": {
+        "hekmatinasser/verta": "^8.5"
+    },
+    "require-dev": {
+        "hekmatinasser/verta": "^8.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kian\\ToDoApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kian",
+            "email": "http0101ww@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
