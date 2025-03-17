@@ -35,13 +35,9 @@
                     <div class="title">Folders</div>
                     <ul class="mt-3">
                         <li><span><i class="fa fa-folder"></i>All</span></li>
-                        <?php // foreach here 
-                        ?>
-                        <li><span><i class="fa fa-folder"></i>Folder 1</span><a class="delicon float-end link">X</a></li>
-                        <li class="active"><span><i class="fa fa-folder"></i>Folder 2</span><a class="delicon float-end link">X</a></li>
-                        <li><span><i class="fa fa-folder"></i>Folder 3</span><a class="delicon float-end link">X</a></li>
-                        <?php // end foreach 
-                        ?>
+                        <?php foreach ($folders as $folder): ?>
+                            <li class="<?php // check active folder ?>"><span><i class="fa fa-folder"></i><?=$folder['name']?></span><a class="delicon float-end link">X</a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="newfolderbox">
@@ -62,22 +58,14 @@
                     <div class="list">
                         <div class="title">Tasks</div>
                         <ul>
-                            <?php // foreach here  
-                            ?>
-                            <li class=""><i class="fa fa-square-o"></i>
-                                <span class="tasktitle">task 1</span><a class="delicon mx-2 float-end link">X</a>
-                                <div class="info">
-                                    <span class="taskdate me-2">date added: 25/04/2014</span>
-                                </div>
-                            </li>
-                            <li class="checked"><i class="fa fa-check-square-o"></i>
-                                <span class="tasktitle">task 2</span><a class="delicon mx-2 float-end link">X</a>
-                                <div class="info">
-                                    <span class="taskdate me-2">date added: 25/04/2014</span>
-                                </div>
-                            </li>
-                            <?php // end foreach  
-                            ?>
+                            <?php foreach ($tasks as $task):  ?>
+                                <li class="<?= $task['is_done'] ? 'checked' : '' ?> link"><i class="fa <?= $task['is_done'] ? 'fa-check-square-o' : 'fa-square-o' ?>"></i>
+                                    <span class="tasktitle"><?= $task['title'] ?></span><a class="delicon mx-2 float-end link">X</a>
+                                    <div class="info">
+                                        <span class="taskdate me-2">date added: <?= $task['created_at'] ?></span>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -89,6 +77,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></script>
     <script src="<?= BASE_URL . '/public/assets/js/script.js' ?>"></script>
+
 
 </body>
 

@@ -226,10 +226,10 @@ body {
   color: #733729;
 }
 .mainn .navv .menuu ul li > span {
-  padding: 10px 60px 10px 10px;
+  padding: 10px 30px 10px 10px;
 }
 .mainn .navv .menuu ul li > span:hover {
-  background-color: #999;
+  background-color: #9999999f;
 }
 
 .mainn .navv .menuu ul li i {
@@ -327,7 +327,7 @@ body {
 }
 
 .mainn .view .content .list ul li.checked {
-  background-color: #f0f4f5;
+  background-color: #efefef;
 }
 
 .checked .tasktitle {
@@ -382,6 +382,10 @@ body {
 
 .mainn .view .content .list ul li .info .button.green {
   background-color: #85c157;
+}
+
+.list ul li:hover {
+  background-color: #cfcfcf92;
 }
 
 .clear {

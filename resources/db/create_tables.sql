@@ -25,6 +25,7 @@ CREATE TABLE
     `tasks` (
         `id` int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `title` varchar(255) COLLATE utf8mb4_persian_ci NOT NULL,
+        `is_done` boolean NOT NULL DEFAULT 0,
         `folder_id` int NOT NULL,
         `user_id` int NOT NULL,
         `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
