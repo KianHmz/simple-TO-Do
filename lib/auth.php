@@ -1,15 +1,12 @@
 <?php
 
-$_SESSION['msg'] = '';
-$_SESSION['user'] = '';
-
 /**
  * authentications
  */
 
 function getUserId()
 {
-    return 1;
+    return $_SESSION['user']['id'];
 }
 
 function registerUser()
@@ -69,8 +66,8 @@ function loginUser()
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $_SESSION['user'] = [
                 'id' => $result['id'],
-                'name' => $result['id'],
-                'email' => $result['id'],
+                'name' => $result['name'],
+                'email' => $result['email'],
             ];
             header('Location: ' . BASE_URL . '/public/index.php');
         }
@@ -81,6 +78,7 @@ function loginUser()
 
 function logoutUser()
 {
+    session_start();
     session_unset();
     session_destroy();
     header('Location: ' . BASE_URL . '/public/auth.php');

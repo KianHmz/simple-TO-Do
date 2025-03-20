@@ -2,7 +2,13 @@
 
 require_once '../bootstrap/init.php';
 
-if ($_GET['action'] === 'logout') {
+if (!isset($_SESSION['user'])) {
+    header('Location: ' . BASE_URL . '/public/auth.php');
+}
+
+$user = $_SESSION['user'];
+
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     logoutUser();
 }
 

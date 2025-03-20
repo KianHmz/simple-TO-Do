@@ -17,7 +17,7 @@
             <div class="title fs-4">Dashboard</div>
             <div class="dropdown">
                 <button class="btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="me-2">John Doe</span>
+                    <span class="me-2"><?= isset($user['name']) ? htmlspecialchars($user['name']) : '{USER-NAME}' ?></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="?action=logout">Logout</a></li>
