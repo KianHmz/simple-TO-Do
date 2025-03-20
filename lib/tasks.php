@@ -4,39 +4,23 @@
  * Tasks CRUD
  */
 
-// $action = $_GET['action'] ?? null;
-
-// switch ($action) {
-//     case 'show':
-//         echo json_encode(["success" => true, "data" => showTasks()]);
-//         break;
-
-//     case 'create':
-//         echo json_encode(["success" => true, "task_id" => createTask()]);
-//         break;
-
-//     case 'update':
-//         echo json_encode(["success" => true, "updated" => updateTask()]);
-//         break;
-
-//     case 'delete':
-//         echo json_encode(["success" => true, "deleted" => deleteTask()]);
-//         break;
-
-//     default:
-//         echo json_encode(["success" => false, "error" => "Invalid Action"]);
-// }
-// exit;
+$userId = getUserId();
 
 function showTasks()
 {
     global $pdo;
+    global $userId;
+    $folderId = $_GET['fid'] ?? 'all';
+    $folderCondition = '';
+    if (is_numeric($folderId)) {
+        $folderCondition = " AND folder_id = $folderId";
+    }
     try {
-        $stmt = $pdo->prepare("SELECT * FROM `tasks` ORDER BY `is_done`, `created_at` DESC");
-        $stmt->execute();
-        return [true, $stmt->fetchAll(PDO::FETCH_ASSOC)];
+        $stmt = $pdo->prepare("SELECT * FROM `tasks` WHERE `user_id` = :user_id $folderCondition ORDER BY `is_done`, `created_at` DESC");
+        $stmt->execute(['user_id' => $userId]);
+        return ['success' => true, 'result' => $stmt->fetchAll(PDO::FETCH_ASSOC)];
     } catch (PDOException $e) {
-        return [false, $e->getMessage()];
+        return ['success' => true, 'result' => $e->getMessage()];
     }
 }
 

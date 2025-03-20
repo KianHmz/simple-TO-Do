@@ -11,20 +11,32 @@ function dd($array)
     echo '</pre>';
 }
 
+function echoDie($msg)
+{
+    echo "$msg";
+    die();
+}
+
 function errorModal($error_title, $error_description)
 {
-    $error_title = htmlspecialchars($error_title);
-    $error_description = htmlspecialchars($error_description);
-
-    include_once BASE_PATH . '/templates/error_modal.php';
-
-    echo
-    "<script>
-    $(document).ready(function() {
-        var errorModal = new bootstrap.Modal($('#errorModal'));
-        $('.modal-title').html('" . $error_title . "');
-        $('.modal-body').html('" . nl2br($error_description) . "');
-        errorModal.show();
+    echo ("
+    <div class='modal fade' id='errorModal' tabindex='-1' aria-labelledby='errorModalLabel' aria-hidden='true'>
+        <div class='modal-dialog modal-md'>
+            <div class='modal-content'>
+                <div class='modal-header bg-danger text-white'>
+                    <h5 class='modal-title' id='errorModalLabel'></h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body' id='errorModalBody'></div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('errorModalLabel').textContent = \"$error_title\";
+    document.getElementById('errorModalBody').textContent = \"$error_description\";
+    document.getElementById('errorModal').setAttribute('data-bs-show', 'true'); 
     });
-    </script>";
+    </script>");
+    die();
 }

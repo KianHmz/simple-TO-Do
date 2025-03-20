@@ -2,19 +2,47 @@
 
 require_once '../bootstrap/init.php';
 
+$action = $_POST['action'] ?? '';
 
-$tasks = showTasks();
-if (!$tasks[0]) {
-    errorModal('Error showing tasks', $tasks[1]);
-} else {
-    $tasks = $tasks[1]; // store fetched records
+
+/**
+ * actions: CREATE & DELETE using AJAX
+ */
+
+switch ($action) {
+
+    case 'createFolder':
+        $folderName = $_POST['folderName'];
+        $createFolder = createFolder($folderName);
+        die(json_encode($createFolder));
+        break;
+
+    case 'deleteFolder':
+        $folderId = $_POST['folderId'];
+        $deleteFolder = deleteFolder($folderId);
+        die(json_encode($deleteFolder));
+        break;
 }
 
-$folders = showFolders();
-if (!$folders[0]) {
-    errorModal('Error showing folders', $folders[1]);
-} else {
-    $folders = $folders[1]; // store fetched records
+/**
+ * actions: SHOW not using AJAX
+ */
+
+$folders = showFolders($userId); // output: [success => , result => ]
+if (!$folders['success']) {
+    errorModal('Error showing folders', $folders['result']);
 }
+$folders = $folders['result']; // store fetched records 
+
+$tasks = showTasks($userId); // output: [success => , result => ]
+if ($tasks['success'] === false) {
+    errorModal('Error showing tasks', $tasks['result']);
+}
+$tasks = $tasks['result']; // store fetched records 
+
+
+
+
+
 
 include_once BASE_PATH . '/templates/home.php';

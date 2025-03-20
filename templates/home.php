@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title><?= APP_NAME ?></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL . '/public/assets/css/style.css' ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
+
     <!-- partial:index.partial.html -->
     <div class="page">
 
@@ -34,15 +35,20 @@
                 <div class="menuu">
                     <div class="title">Folders</div>
                     <ul class="mt-3">
-                        <li><span><i class="fa fa-folder"></i>All</span></li>
+                        <li class="<?= $_GET['fid'] == 'all' ? 'active' : '' ?>">
+                            <a class="link" href="?fid=all"><i class="fa fa-folder"></i>All</a>
+                        </li>
                         <?php foreach ($folders as $folder): ?>
-                            <li class="<?php // check active folder ?>"><span><i class="fa fa-folder"></i><?=$folder['name']?></span><a class="delicon float-end link">X</a></li>
+                            <li class="<?= $_GET['fid'] == $folder['id'] ? 'active' : '' ?>">
+                                <a class="link" href="?fid=<?= $folder['id'] ?>"><i class="fa fa-folder"></i><?= $folder['name'] ?></a>
+                                <a class="delfolderbtn delicon float-end link" data-dfid="<?= $folder['id'] ?>">X</a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="newfolderbox">
-                    <input type="text" placeholder="Add New Folder" />
-                    <button type="button" class="btn btn-light">
+                    <input id="newfolderinp" type="text" placeholder="Add New Folder" />
+                    <button id="newfolderbtn" type="button" class="btn btn-light">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
@@ -73,11 +79,12 @@
         </div>
     </div>
     <!-- partial -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></script>
-    <script src="<?= BASE_URL . '/public/assets/js/script.js' ?>"></script>
 
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <script src="<?= BASE_URL . '/public/assets/js/jquery.min.js' ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= BASE_URL . '/public/assets/js/helpers.js' ?>"></script>
+    <script src="<?= BASE_URL . '/public/assets/js/ajax_handler.js' ?>"></script>
 
 </body>
 
