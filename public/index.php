@@ -4,7 +4,6 @@ require_once '../bootstrap/init.php';
 
 $action = $_POST['action'] ?? '';
 
-
 /**
  * actions: CREATE & DELETE using AJAX
  */
@@ -58,9 +57,6 @@ if ($tasks['success'] === false) {
     errorModal('Error showing tasks', $tasks['result']);
 }
 $tasks = $tasks['result']; // store fetched records 
-
-
-
 
 
 
