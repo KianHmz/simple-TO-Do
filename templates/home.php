@@ -20,7 +20,7 @@
                     <span class="me-2">John Doe</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="?action=logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -66,7 +66,7 @@
                         <ul>
                             <?php foreach ($tasks as $task):  ?>
                                 <li class="<?= $task['is_done'] ? 'checked' : '' ?> link">
-                                    <i class="donetaskbtn fa <?= $task['is_done'] ? 'fa-check-square-o' : 'fa-square-o' ?>"  data-donetask="<?= $task['id'] ?>"></i>
+                                    <i class="donetaskbtn fa <?= $task['is_done'] ? 'fa-check-square-o' : 'fa-square-o' ?>" data-donetask="<?= $task['id'] ?>"></i>
                                     <span class="tasktitle"><?= $task['title'] ?></span>
                                     <a class="deltaskbtn delicon mx-2 float-end link" data-deltask="<?= $task['id'] ?>">X</a>
                                     <div class="info">

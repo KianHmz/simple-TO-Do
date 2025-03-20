@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require_once '../bootstrap/init.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,5 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['msg'] = loginUser();
     }
 }
+
 
 include_once BASE_PATH . '/templates/form.php';

@@ -2,6 +2,10 @@
 
 require_once '../bootstrap/init.php';
 
+if ($_GET['action'] === 'logout') {
+    logoutUser();
+}
+
 $action = $_POST['action'] ?? '';
 
 /**

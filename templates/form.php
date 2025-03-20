@@ -49,13 +49,13 @@
                         <label>
                             Email Address<span class="req">*</span>
                         </label>
-                        <input name="email" type="email" required autocomplete="off" />
+                        <input name="email" type="text" autocomplete="off" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Password<span class="req">*</span>
                         </label>
-                        <input name="password" type="password" required autocomplete="off" />
+                        <input name="password" type="password" autocomplete="off" />
                     </div>
                     <button name="login" type="submit" class="button button-block" />Log In</button>
                 </form>
