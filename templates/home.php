@@ -41,7 +41,7 @@
                         <?php foreach ($folders as $folder): ?>
                             <li class="<?= $_GET['fid'] == $folder['id'] ? 'active' : '' ?>">
                                 <a class="link" href="?fid=<?= $folder['id'] ?>"><i class="fa fa-folder"></i><?= $folder['name'] ?></a>
-                                <a class="delfolderbtn delicon float-end link" data-dfid="<?= $folder['id'] ?>">X</a>
+                                <a class="delfolderbtn delicon float-end link" data-delfolder="<?= $folder['id'] ?>">X</a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -55,8 +55,8 @@
             </div>
             <div class="view">
                 <div class="viewHeader">
-                    <input type="text" class="w-50" placeholder="Add new task">
-                    <button type="button" class="btn btn-light float-end me-1">
+                    <input id="newtaskinp" type="text" class="w-50" placeholder="Add new task">
+                    <button id="newtaskbtn" type="button" class="btn btn-light float-end me-1">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
@@ -65,8 +65,10 @@
                         <div class="title">Tasks</div>
                         <ul>
                             <?php foreach ($tasks as $task):  ?>
-                                <li class="<?= $task['is_done'] ? 'checked' : '' ?> link"><i class="fa <?= $task['is_done'] ? 'fa-check-square-o' : 'fa-square-o' ?>"></i>
-                                    <span class="tasktitle"><?= $task['title'] ?></span><a class="delicon mx-2 float-end link">X</a>
+                                <li class="<?= $task['is_done'] ? 'checked' : '' ?> link">
+                                    <i class="donetaskbtn fa <?= $task['is_done'] ? 'fa-check-square-o' : 'fa-square-o' ?>"  data-donetask="<?= $task['id'] ?>"></i>
+                                    <span class="tasktitle"><?= $task['title'] ?></span>
+                                    <a class="deltaskbtn delicon mx-2 float-end link" data-deltask="<?= $task['id'] ?>">X</a>
                                     <div class="info">
                                         <span class="taskdate me-2">date added: <?= $task['created_at'] ?></span>
                                     </div>

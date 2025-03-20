@@ -42,11 +42,6 @@ function createFolder($folder_name)
     }
 }
 
-// function updateFolder() // UI rename folder ndre ***
-// {
-//     return false;
-// }
-
 function deleteFolder($folder_id)
 {
     global $pdo;

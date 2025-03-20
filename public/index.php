@@ -22,6 +22,25 @@ switch ($action) {
         $deleteFolder = deleteFolder($folderId);
         die(json_encode($deleteFolder));
         break;
+
+    case 'createTask':
+        $taskTitle = $_POST['taskTitle'];
+        $folderId = $_POST['folderId'];
+        $createTask = createTask($taskTitle, $folderId);
+        die(json_encode($createTask));
+        break;
+
+    case 'deleteTask':
+        $taskId = $_POST['taskId'];
+        $deleteTask = deleteTask($taskId);
+        die(json_encode($deleteTask));
+        break;
+
+    case 'doneTask':
+        $taskId = $_POST['taskId'];
+        $doneTask = doneTask($taskId);
+        die(json_encode($doneTask));
+        break;
 }
 
 /**

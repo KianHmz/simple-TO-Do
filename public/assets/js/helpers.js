@@ -1,11 +1,8 @@
 const BASE_URL = "http://localhost/newstart;)/to-do-app";
 
 function showErrorModal(error_title, error_description) {
-  // clean params
-  error_title = $("<div>").text(error_title).html();
-  error_description = $("<div>").text(error_description).html();
   // add modal
-    $("body").append(`
+  $("body").append(`
           <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-md">
                   <div class="modal-content">
@@ -21,4 +18,9 @@ function showErrorModal(error_title, error_description) {
   $("#errorModalLabel").text(error_title);
   $("#errorModalBody").text(error_description);
   $("#errorModal").modal("show");
+}
+
+function getFromUrl(what_to_get) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(what_to_get);
 }
