@@ -27,11 +27,11 @@
 
         <div class="mainn">
             <div class="navv">
-                <div class="searchbox">
+                <!-- <div class="searchbox">
                     <div><i class="fa fa-search"></i>
                         <input type="search" placeholder="Search" />
                     </div>
-                </div>
+                </div> -->
                 <div class="menuu">
                     <div class="title">Folders</div>
                     <ul class="mt-3">

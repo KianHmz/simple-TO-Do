@@ -36,7 +36,7 @@ function registerUser()
         }
 
         $stmt = $pdo->prepare("INSERT INTO `users`(name, email, password) VALUES(:name, :email, :password)");
-        $stmt->execute(['name' => $userData['name'], 'email' => $userData['email'], 'password' => $userData['password']]);
+        $stmt->execute(['name' => $userData['name'], 'email' => $userData['email'], 'password' => password_hash($userData['password'], PASSWORD_DEFAULT)]);
         return 'You signed up successfully. Please Login.';
     } catch (PDOException $e) {
         return 'Error: ' . $e->getMessage();
@@ -60,17 +60,34 @@ function loginUser()
 
     try {
         global $pdo;
-        $stmt = $pdo->prepare("SELECT * FROM `users` WHERE email = :email AND password = :password");
-        $stmt->execute(['email' => $userData['email'], 'password' => $userData['password']]);
-        if ($stmt->rowCount() == 1) {
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        $stmt = $pdo->prepare("SELECT * FROM `users` WHERE email = :email");
+        $stmt->execute(['email' => $userData['email']]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result && password_verify($userData['password'], $result['password'])) {
             $_SESSION['user'] = [
                 'id' => $result['id'],
                 'name' => $result['name'],
                 'email' => $result['email'],
             ];
             header('Location: ' . BASE_URL . '/public/index.php');
+        }else{
+            return 'Invalid email or password.';
         }
+
+
+        // $stmt = $pdo->prepare("SELECT * FROM `users` WHERE email = :email AND password = :password");
+        // $stmt->execute(['email' => $userData['email'], 'password' => $userData['password']]);
+        // if ($stmt->rowCount() == 1) {
+        //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        //     $_SESSION['user'] = [
+        //         'id' => $result['id'],
+        //         'name' => $result['name'],
+        //         'email' => $result['email'],
+        //     ];
+        //     header('Location: ' . BASE_URL . '/public/index.php');
+        // }
     } catch (PDOException $e) {
         return 'Error: ' . $e->getMessage();
     }
