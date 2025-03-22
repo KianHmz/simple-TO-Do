@@ -1,5 +1,10 @@
 # simple To Do app using PHP (procedural)
 
+### Built with
+![PHP](https://img.shields.io/badge/PHP-procedural-blue)
+![MySQL](https://img.shields.io/badge/MySQL-dbms-orange)
+![AJAX](https://img.shields.io/badge/AJAX-dynamic-green)
+
 ### 1- Change the project path in `config/consts.php`
 ```php
 define('BASE_PATH', '{project-path}');
