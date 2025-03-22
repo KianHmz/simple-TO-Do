@@ -406,3 +406,8 @@ body {
 .delicon:hover {
   color: rgb(87, 10, 10);
 }
+
+.author{
+  color: #55545a;
+  margin-top: 30px;
+}

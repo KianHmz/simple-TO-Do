@@ -1,0 +1,21 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment and sensitive files
+.env
+.env.local
+.env.*.local
+.phpunit.result.cache
+
+# Ignore IDE and editor files
+.idea/
+*.sublime-workspace
+*.vscode/
+
+# Ignore vendor and dependencies
+/vendor/
+/node_modules/
+
+# Ignore Composer files
+composer.lock

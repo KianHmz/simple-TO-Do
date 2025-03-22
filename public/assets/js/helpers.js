@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost/newstart;)/to-do-app";
+const BASE_URL = "http://localhost/to-do-app";
 
 function showErrorModal(error_title, error_description) {
   // add modal

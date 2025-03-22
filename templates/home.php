@@ -79,6 +79,7 @@
                 </div>
             </div>
         </div>
+        <a class="author link" target="_blank" href="https://github.com/KianHmz">Built with passion by KianHmz ;))</a>
     </div>
     <!-- partial -->
 
