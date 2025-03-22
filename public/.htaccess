@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# REDIRECT REQUESTS TO index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# BLOCK FILES EXCLUD public/
+RewriteRule ^(.*)/(.*)\.php$ - [F,L]
+
+# HTTP HEADERS
+ErrorDocument 404 /index.php?error=404
+ErrorDocument 403 /index.php?error=403

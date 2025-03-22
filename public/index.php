@@ -2,16 +2,30 @@
 
 require_once '../bootstrap/init.php';
 
+/**
+ * page accessing: HTTP header
+ */
+
+if (isset($_GET['error'])) {
+    http_response_code($_GET['error']);
+}
+
+/**
+ * page accessing: SESSION
+ */
+
 if (!isset($_SESSION['user'])) {
     header('Location: ' . BASE_URL . '/public/auth.php');
 }
-
 $user = $_SESSION['user'];
+
+/**
+ * actions
+ */
 
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     logoutUser();
 }
-
 $action = $_POST['action'] ?? '';
 
 /**

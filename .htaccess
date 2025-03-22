@@ -1,0 +1,7 @@
+# BLOCK DIRECT ACCESS TO DIRS 
+RewriteEngine On
+RewriteRule ^(bootstrap|config|libs|resources|src|templates|errors|vendor)/ - [F,L]
+
+# ONLY ACCESS public/
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]

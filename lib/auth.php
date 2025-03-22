@@ -72,22 +72,9 @@ function loginUser()
                 'email' => $result['email'],
             ];
             header('Location: ' . BASE_URL . '/public/index.php');
-        }else{
+        } else {
             return 'Invalid email or password.';
         }
-
-
-        // $stmt = $pdo->prepare("SELECT * FROM `users` WHERE email = :email AND password = :password");
-        // $stmt->execute(['email' => $userData['email'], 'password' => $userData['password']]);
-        // if ($stmt->rowCount() == 1) {
-        //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        //     $_SESSION['user'] = [
-        //         'id' => $result['id'],
-        //         'name' => $result['name'],
-        //         'email' => $result['email'],
-        //     ];
-        //     header('Location: ' . BASE_URL . '/public/index.php');
-        // }
     } catch (PDOException $e) {
         return 'Error: ' . $e->getMessage();
     }
