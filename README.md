@@ -1,4 +1,4 @@
-# simple To Do app using PHP (procedural)
+# to do app using PHP (procedural)
 
 ### Built with
 ![PHP](https://img.shields.io/badge/PHP-procedural-blue)
